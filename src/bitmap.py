@@ -25,7 +25,6 @@ class BitMap(object):
         """
         Create a BitMap
         """
-        self.count = 0
         self.bitmap = array.array('b', [0 for i in range(maxnum)])
 
     def __del__(self):

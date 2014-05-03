@@ -14,7 +14,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(name='bitmap',
-      version='0.0.1',
+      version='0.0.3',
       author='WAN Ji',
       author_email='wanji@live.com',
       package_dir={'bitmap': 'src'},
@@ -24,7 +24,7 @@ setup(name='bitmap',
       description='.',
       long_description=open('README.md').read(),
       install_requires=[
-          "numpy      >= 1.7.0",
-          "leveldb    >= 0.192",
+          # "numpy      >= 1.7.0",
+          # "leveldb    >= 0.192",
       ],
       )
