@@ -14,16 +14,15 @@ except ImportError:
     from distutils.core import setup
 
 setup(name='bitmap',
-      version='0.0.4',
+      version='0.0.5',
       author='WAN Ji',
       author_email='wanji@live.com',
       package_dir={'bitmap': 'src'},
       packages=['bitmap'],
-      url='http://pypi.python.org/pypi/bitmap/',
+      url='https://github.com/wanji/bitmap',
       # license='LICENSE.txt',
       description='.',
       long_description=open('README.md').read(),
       install_requires=[
-          # "numpy      >= 1.7.0",
       ],
       )
