@@ -109,6 +109,21 @@ class BitMap(object):
         Overloads string operator
         """
         return self.tostring()
+    def __getitem__(self, item):
+        """
+        Return a bit when indexing like a array
+        """
+        return self.test(item)
+    def __setitem__(self, key, value):
+        """
+        Sets a bit when indexing like a array
+        """
+        if value == True:
+            self.set(key)
+        elif value == False:
+            self.reset(key)
+        else:
+            raise Exception("Use a boolean value to assign to a bitfield")
 
     @classmethod
     def fromstring(cls, bitstring):
