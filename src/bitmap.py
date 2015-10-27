@@ -125,6 +125,19 @@ class BitMap(object):
         else:
             raise Exception("Use a boolean value to assign to a bitfield")
 
+    def tohexstring(self):
+        """
+        Returns a hexadecimal string
+        """
+        val = self.tostring()
+        st = "{0:0x}".format(int(val,2))
+        return st.zfill(len(self.bitmap)*2)
+
+    @classmethod
+    def fromhexstring(cls, hexstring):
+        bitstring = format(int(hexstring,16),"0" + str(len(hexstring)/4) + "b")
+        return cls.fromstring(bitstring)
+
     @classmethod
     def fromstring(cls, bitstring):
         """
