@@ -104,6 +104,11 @@ class BitMap(object):
         """
         return "".join([("%s" % bin(x)[2:]).zfill(8)
                         for x in self.bitmap[::-1]])
+    def __str__(self):
+        """
+        Overloads string operator
+        """
+        return self.tostring()
 
     @classmethod
     def fromstring(cls, bitstring):
