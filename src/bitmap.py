@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-#########################################################################
-#########################################################################
-
 """
    File Name: bitmap.py
       Author: Wan Ji
@@ -104,23 +101,26 @@ class BitMap(object):
         """
         return "".join([("%s" % bin(x)[2:]).zfill(8)
                         for x in self.bitmap[::-1]])
+
     def __str__(self):
         """
         Overloads string operator
         """
         return self.tostring()
+
     def __getitem__(self, item):
         """
         Return a bit when indexing like a array
         """
         return self.test(item)
+
     def __setitem__(self, key, value):
         """
         Sets a bit when indexing like a array
         """
-        if value == True:
+        if value is True:
             self.set(key)
-        elif value == False:
+        elif value is False:
             self.reset(key)
         else:
             raise Exception("Use a boolean value to assign to a bitfield")
@@ -130,12 +130,15 @@ class BitMap(object):
         Returns a hexadecimal string
         """
         val = self.tostring()
-        st = "{0:0x}".format(int(val,2))
+        st = "{0:0x}".format(int(val, 2))
         return st.zfill(len(self.bitmap)*2)
 
     @classmethod
     def fromhexstring(cls, hexstring):
-        bitstring = format(int(hexstring,16),"0" + str(len(hexstring)/4) + "b")
+        """
+        Construct BitMap from hex string
+        """
+        bitstring = format(int(hexstring, 16), "0" + str(len(hexstring)/4) + "b")
         return cls.fromstring(bitstring)
 
     @classmethod
