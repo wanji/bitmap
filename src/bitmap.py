@@ -111,7 +111,7 @@ class BitMap(object):
         Construct BitMap from string
         """
         nbits = len(bitstring)
-        bm = BitMap(nbits)
+        bm = cls(nbits)
         for i in xrange(nbits):
             if bitstring[-i-1] == '1':
                 bm.set(i)
