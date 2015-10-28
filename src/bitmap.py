@@ -104,6 +104,39 @@ class BitMap(object):
         """
         return "".join([("%s" % bin(x)[2:]).zfill(8)
                         for x in self.bitmap[::-1]])
+    def __str__(self):
+        """
+        Overloads string operator
+        """
+        return self.tostring()
+    def __getitem__(self, item):
+        """
+        Return a bit when indexing like a array
+        """
+        return self.test(item)
+    def __setitem__(self, key, value):
+        """
+        Sets a bit when indexing like a array
+        """
+        if value == True:
+            self.set(key)
+        elif value == False:
+            self.reset(key)
+        else:
+            raise Exception("Use a boolean value to assign to a bitfield")
+
+    def tohexstring(self):
+        """
+        Returns a hexadecimal string
+        """
+        val = self.tostring()
+        st = "{0:0x}".format(int(val,2))
+        return st.zfill(len(self.bitmap)*2)
+
+    @classmethod
+    def fromhexstring(cls, hexstring):
+        bitstring = format(int(hexstring,16),"0" + str(len(hexstring)/4) + "b")
+        return cls.fromstring(bitstring)
 
     @classmethod
     def fromstring(cls, bitstring):
