@@ -15,7 +15,7 @@ $ sudo pip install bitmap
 
 - `BitMap(maxnum)`: construct a `BitMap` object with `maxnum` bits
 - `set(pos)`: set the bit at position `pos` to 1
-- `reset(pos)`: reset the bit at position `pos` to 1
+- `reset(pos)`: reset the bit at position `pos` to 0
 - `flip(pos)`: flip the bit at position `pos`
 - `count()`: return the number of 1s
 - `size()`: return the size of the `BitMap`
