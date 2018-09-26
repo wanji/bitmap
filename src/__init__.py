@@ -1,1 +1,1 @@
-from bitmap import BitMap
+from .bitmap import BitMap
