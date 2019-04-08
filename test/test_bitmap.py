@@ -15,6 +15,10 @@ DESCRIPTION = """
 
 import unittest
 from bitmap import BitMap
+try:
+    from past.builtins import xrange
+except ImportError:
+    pass
 
 
 class TestBitMap(unittest.TestCase):
@@ -43,7 +47,7 @@ class TestBitMap(unittest.TestCase):
         pass
 
     def helper_str_zfill(self, bitstr):
-        return bitstr.zfill((len(bitstr) + 7) / 8 * 8)
+        return bitstr.zfill((len(bitstr) + 7) // 8 * 8)
 
     def test_str(self):
         """ Test BitMap: create

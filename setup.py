@@ -24,5 +24,10 @@ setup(name='bitmap',
       description='.',
       long_description=open('README.md').read(),
       install_requires=[
+        'future',
       ],
+      classifiers=[
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.7',
+    ],
       )

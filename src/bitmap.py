@@ -12,7 +12,10 @@ BitMap class
 """
 
 import array
-
+try:
+    from past.builtins import xrange
+except ImportError:
+    pass
 
 class BitMap(object):
     """
@@ -26,7 +29,7 @@ class BitMap(object):
         """
         Create a BitMap
         """
-        nbytes = (maxnum + 7) / 8
+        nbytes = (maxnum + 7) // 8
         self.bitmap = array.array('B', [0 for i in range(nbytes)])
 
     def __del__(self):
@@ -39,19 +42,19 @@ class BitMap(object):
         """
         Set the value of bit@pos to 1
         """
-        self.bitmap[pos / 8] |= self.BITMASK[pos % 8]
+        self.bitmap[pos // 8] |= self.BITMASK[pos % 8]
 
     def reset(self, pos):
         """
         Reset the value of bit@pos to 0
         """
-        self.bitmap[pos / 8] &= ~self.BITMASK[pos % 8]
+        self.bitmap[pos // 8] &= ~self.BITMASK[pos % 8]
 
     def flip(self, pos):
         """
         Flip the value of bit@pos
         """
-        self.bitmap[pos / 8] ^= self.BITMASK[pos % 8]
+        self.bitmap[pos // 8] ^= self.BITMASK[pos % 8]
 
     def count(self):
         """
@@ -69,7 +72,7 @@ class BitMap(object):
         """
         Return bit value
         """
-        return (self.bitmap[pos / 8] & self.BITMASK[pos % 8]) != 0
+        return (self.bitmap[pos // 8] & self.BITMASK[pos % 8]) != 0
 
     def any(self):
         """
@@ -87,7 +90,7 @@ class BitMap(object):
         """
         Test if all bits are set
         """
-        return (self.count() + 7) / 8 * 8 == self.size()
+        return (self.count() + 7) // 8 * 8 == self.size()
 
     def nonzero(self):
         """
