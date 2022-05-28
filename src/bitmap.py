@@ -25,12 +25,13 @@ class BitMap(object):
     BITMASK = [0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80]
     BIT_CNT = [bin(i).count("1") for i in xrange(256)]
 
-    def __init__(self, maxnum=0):
+    def __init__(self, maxnum=0, preset=False):
         """
         Create a BitMap
         """
         nbytes = (maxnum + 7) // 8
-        self.bitmap = array.array('B', [0 for i in range(nbytes)])
+        bit_value = 0xFF if preset else 0x00
+        self.bitmap = array.array('B', [bit_value for i in range(nbytes)])
 
     def __del__(self):
         """
@@ -97,6 +98,12 @@ class BitMap(object):
         Get all non-zero bits
         """
         return [i for i in xrange(self.size()) if self.test(i)]
+   
+    def zero(self):
+         """
+         Get all zero bits
+         """
+         return [i for i in xrange(self.size()) if not self.test(i)]
 
     def tostring(self):
         """
